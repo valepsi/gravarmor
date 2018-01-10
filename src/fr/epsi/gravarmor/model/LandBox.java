@@ -1,4 +1,4 @@
-package fr.epsi.gravarmor;
+package fr.epsi.gravarmor.model;
 
 public class LandBox {
 
