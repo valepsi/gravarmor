@@ -1,0 +1,21 @@
+
+
+.context-menu {
+    -fx-background-color: #3F4144;
+}
+
+.menu-bar { /* Menu */
+    -fx-background-color: #3F4144;
+}
+
+.menu-bar .label { /* Textes du menu */
+    -fx-text-fill: white;
+}
+
+.menu-bar .label:focused { /* Elements selectionné du menu */
+    -fx-background-color: #3F4144
+}
+
+.menu-bar .menu-item .label:focused {
+    -fx-background-color: darkgray;
+}

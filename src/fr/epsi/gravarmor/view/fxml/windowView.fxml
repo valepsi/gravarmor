@@ -1,0 +1,26 @@
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.VBox?>
+<?import java.net.URL?>
+
+<VBox fx:controller="fr.epsi.gravarmor.controller.WindowController" xmlns:fx="http://javafx.com/fxml">
+    <MenuBar fx:id="menuBar">
+        <menus>
+            <Menu text="Game">
+                <items>
+                    <MenuItem text="New Game" onAction="#handleMenuActionNewGame"/>
+                    <MenuItem text="Quit" onAction="#handleMenuActionQuit"/>
+                </items>
+            </Menu>
+        </menus>
+    </MenuBar>
+    <TabPane fx:id="tabPane">
+
+    </TabPane>
+    <stylesheets>
+        <URL value="@windowView.css" />
+    </stylesheets>
+</VBox>
