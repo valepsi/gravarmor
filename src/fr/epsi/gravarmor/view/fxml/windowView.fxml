@@ -8,14 +8,10 @@
 
 <VBox fx:controller="fr.epsi.gravarmor.controller.WindowController" xmlns:fx="http://javafx.com/fxml">
     <MenuBar fx:id="menuBar">
-        <menus>
-            <Menu text="Game">
-                <items>
-                    <MenuItem text="New Game" onAction="#handleMenuActionNewGame"/>
-                    <MenuItem text="Quit" onAction="#handleMenuActionQuit"/>
-                </items>
-            </Menu>
-        </menus>
+        <Menu text="Game">
+            <MenuItem text="New Game" onAction="#handleMenuActionNewGame"/>
+            <MenuItem text="Quit" onAction="#handleMenuActionQuit"/>
+        </Menu>
     </MenuBar>
     <TabPane fx:id="tabPane">
 
