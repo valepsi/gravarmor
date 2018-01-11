@@ -1,9 +1,12 @@
 package fr.epsi.gravarmor.model;
 
+import javafx.scene.shape.Shape;
+
 public class LandBox {
 
     private BoxType type;
     private ILandEntity entity;
+    private Shape shape;
 
     public LandBox(BoxType type) {
 
@@ -25,5 +28,13 @@ public class LandBox {
     public ILandEntity getEntity() {
 
         return entity;
+    }
+
+    public void setShape(Shape shape) {
+        this.shape = shape;
+    }
+
+    public Shape getShape() {
+        return shape;
     }
 }
