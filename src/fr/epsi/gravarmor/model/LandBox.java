@@ -6,7 +6,7 @@ import java.util.List;
 public class LandBox {
 
     private BoxType type;
-    private List<ILandEntity> entities;
+    private List<Entity> entities;
 
     public LandBox(BoxType type) {
 
@@ -14,14 +14,14 @@ public class LandBox {
         this.entities = new ArrayList<>();
     }
 
-    public LandBox(BoxType type, ILandEntity entity) {
+    public LandBox(BoxType type, Entity entity) {
 
         this.type = type;
         this.entities = new ArrayList<>();
         this.entities.add(entity);
     }
 
-    public LandBox(BoxType type, List<ILandEntity> entities) {
+    public LandBox(BoxType type, List<Entity> entities) {
 
         this.type = type;
         this.entities = entities;
@@ -32,7 +32,7 @@ public class LandBox {
         return type;
     }
 
-    public List<ILandEntity> getEntities() {
+    public List<Entity> getEntities() {
 
         return entities;
     }
