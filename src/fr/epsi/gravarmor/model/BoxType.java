@@ -6,6 +6,7 @@ public enum BoxType {
     QUICKSAND(true),
     FOREST(true),
     MONTAINS(false),
+    HIDDEN(false),
     WATER(false);
 
     private boolean isAvailableForInterraction;
@@ -37,6 +38,9 @@ public enum BoxType {
 
             case 'W':
                 return BoxType.WATER;
+
+            case 'H':
+                return BoxType.HIDDEN;
 
             default:
                 return BoxType.OUT;

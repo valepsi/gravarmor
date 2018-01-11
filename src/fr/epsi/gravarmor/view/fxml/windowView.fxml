@@ -2,10 +2,10 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.VBox?>
 <?import java.net.URL?>
 
+<?import javafx.scene.control.ScrollPane?>
 <VBox fx:controller="fr.epsi.gravarmor.controller.WindowController" xmlns:fx="http://javafx.com/fxml">
     <MenuBar fx:id="menuBar">
         <Menu text="Game">
@@ -13,9 +13,9 @@
             <MenuItem text="Quit" onAction="#handleMenuActionQuit"/>
         </Menu>
     </MenuBar>
-    <TabPane fx:id="tabPane">
+    <ScrollPane fx:id="landPane">
 
-    </TabPane>
+    </ScrollPane>
     <stylesheets>
         <URL value="@windowView.css" />
     </stylesheets>

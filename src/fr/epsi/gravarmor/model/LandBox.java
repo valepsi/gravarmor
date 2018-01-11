@@ -1,23 +1,30 @@
 package fr.epsi.gravarmor.model;
 
-import javafx.scene.shape.Shape;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LandBox {
 
     private BoxType type;
-    private ILandEntity entity;
-    private Shape shape;
+    private List<ILandEntity> entities;
 
     public LandBox(BoxType type) {
 
         this.type = type;
-        this.entity = null;
+        this.entities = new ArrayList<>();
     }
 
     public LandBox(BoxType type, ILandEntity entity) {
 
         this.type = type;
-        this.entity = entity;
+        this.entities = new ArrayList<>();
+        this.entities.add(entity);
+    }
+
+    public LandBox(BoxType type, List<ILandEntity> entities) {
+
+        this.type = type;
+        this.entities = entities;
     }
 
     public BoxType getType() {
@@ -25,16 +32,8 @@ public class LandBox {
         return type;
     }
 
-    public ILandEntity getEntity() {
+    public List<ILandEntity> getEntities() {
 
-        return entity;
-    }
-
-    public void setShape(Shape shape) {
-        this.shape = shape;
-    }
-
-    public Shape getShape() {
-        return shape;
+        return entities;
     }
 }
