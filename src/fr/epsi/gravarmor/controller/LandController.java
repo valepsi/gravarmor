@@ -20,7 +20,7 @@ class LandController {
     private final ScrollPane pane;
     private final HexaLand land;
 
-    LandController(ScrollPane pane, HexaLand land) {
+    LandController(ScrollPane pane, final HexaLand land) {
 
         this.pane = pane;
         this.land = land;
@@ -61,6 +61,9 @@ class LandController {
                         ae -> polygon.setFill(getColorForType(box.getType())))
                 ).play();
 
+                polygon.setOnMouseClicked(event -> {
+                    System.out.println(box);
+                });
             }
         }
 

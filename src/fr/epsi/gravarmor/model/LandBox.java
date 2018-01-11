@@ -36,4 +36,9 @@ public class LandBox {
 
         return entities;
     }
+
+    public String toString() {
+
+        return "Type : " + type + ", Entities : " + entities;
+    }
 }
