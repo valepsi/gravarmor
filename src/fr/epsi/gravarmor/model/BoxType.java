@@ -1,26 +1,45 @@
 package fr.epsi.gravarmor.model;
 
 public enum BoxType {
-    GRASS(true, true),
-    STONE(false, false),
-    WATER(false, true);
+    OUT(false),
+    SAND(true),
+    QUICKSAND(true),
+    FOREST(true),
+    MONTAINS(false),
+    WATER(false);
 
-    private boolean isAvailableForArmy;
-    private boolean isAvailableForBullet;
+    private boolean isAvailableForInterraction;
 
-    BoxType(boolean isAvailableForArmy, boolean isAvailableForBullet) {
+    BoxType(boolean isAvailableForInterraction) {
 
-        this.isAvailableForArmy = isAvailableForArmy;
-        this.isAvailableForBullet = isAvailableForBullet;
+        this.isAvailableForInterraction = isAvailableForInterraction;
     }
 
-    public boolean isAvailableForArmy() {
+    public boolean isAvailableForInterraction() {
 
-        return isAvailableForArmy;
+        return isAvailableForInterraction;
     }
 
-    public boolean isAvailableForBullet() {
+    public static BoxType fromChar(char car) {
 
-        return isAvailableForBullet;
+        switch(car) {
+            case 'S':
+                return BoxType.SAND;
+
+            case 'Q':
+                return BoxType.QUICKSAND;
+
+            case 'F':
+                return BoxType.FOREST;
+
+            case 'M':
+                return BoxType.MONTAINS;
+
+            case 'W':
+                return BoxType.WATER;
+
+            default:
+                return BoxType.OUT;
+        }
     }
 }
