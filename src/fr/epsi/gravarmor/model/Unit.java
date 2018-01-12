@@ -1,5 +1,6 @@
 package fr.epsi.gravarmor.model;
 
+
 public class Unit extends Entity {
     private boolean actif;
     private boolean destroyed;
@@ -48,5 +49,14 @@ public class Unit extends Entity {
 
     public String toString(){
         return type.toString();
+    }
+
+    public void mouv(LandBox boxD,LandBox boxA){
+        int pmRestant = this.type.getMouvementPoint() - this.getMouvementPoint();
+        if (pmRestant >= boxA.getType().getPm()) {
+            boxD.getEntities().remove(this);
+            boxA.getEntities().add(this);
+        }
+
     }
 }
