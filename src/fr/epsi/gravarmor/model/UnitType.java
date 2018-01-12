@@ -24,7 +24,7 @@ public enum UnitType {
         return movementPoints;
     }
 
-    public void setMovementPoints(int mouvementPoint) {
+    public void setMovementPoints(int movementPoints) {
         this.movementPoints = movementPoints;
     }
 

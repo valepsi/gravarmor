@@ -31,6 +31,7 @@ public class Launcher extends Application {
             FXMLLoader windowLoader = new FXMLLoader(getClass().getClassLoader().getResource("fr/epsi/gravarmor/view/fxml/windowView.fxml"));
             VBox windowView = windowLoader.load();
             windowController = windowLoader.getController();
+            windowController.setStage(stage);
 
             Scene scene = new Scene(windowView, (land.getWidth()*HEXA_WIDTH*3/4)+HEXA_WIDTH/4+5+200, land.getHeight()*HEXA_HEIGHT+28+2);
 
