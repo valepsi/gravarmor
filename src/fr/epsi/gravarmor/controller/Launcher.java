@@ -7,14 +7,11 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
-import java.util.function.BiPredicate;
 
 public class Launcher extends Application {
 
@@ -34,7 +31,6 @@ public class Launcher extends Application {
             windowController = windowLoader.getController();
 
             Scene scene = new Scene(windowView, (land.getWidth()*HEXA_WIDTH*3/4)+HEXA_WIDTH/4+5+200, land.getHeight()*HEXA_HEIGHT+28+2);
-            BorderLayout borderLayoutRight = new BorderLayout();
 
             if(Screen.getScreens().size() > 1) {
                 Screen screen = Screen.getScreens().get(1);
