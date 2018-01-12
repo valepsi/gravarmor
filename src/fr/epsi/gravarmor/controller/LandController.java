@@ -1,9 +1,6 @@
 package fr.epsi.gravarmor.controller;
 
-import fr.epsi.gravarmor.model.BoxType;
-import fr.epsi.gravarmor.model.HexaCoordinates;
-import fr.epsi.gravarmor.model.HexaLand;
-import fr.epsi.gravarmor.model.LandBox;
+import fr.epsi.gravarmor.model.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Group;
@@ -44,26 +41,45 @@ class LandController {
                 double x = -HEXA_WIDTH / 3 + xl * HEXA_WIDTH - xl * (HEXA_WIDTH / 4);
                 double y = -HEXA_HEIGHT / 2 + yl * HEXA_HEIGHT + (xl % 2 == 1 ? HEXA_HEIGHT / 2 : 0);
 
-                final Polygon polygon = new Polygon();
-                polygon.getPoints().addAll(x + HEXA_WIDTH / 4, y + 0,
+                Polygon polygonNode = new Polygon();
+                polygonNode.getPoints().addAll(x + HEXA_WIDTH / 4, y + 0,
                         x + HEXA_WIDTH / 4 * 3, y + 0,
                         x + HEXA_WIDTH, y + HEXA_HEIGHT / 2,
                         x + HEXA_WIDTH / 4 * 3, y + HEXA_HEIGHT,
                         x + HEXA_WIDTH / 4, y + HEXA_HEIGHT,
                         x + 0, y + HEXA_HEIGHT / 2);
-                g.getChildren().add(polygon);
+                g.getChildren().add(polygonNode);
 
-                polygon.setStroke(Color.WHITE);
-                polygon.setFill(Color.WHITE);
+                polygonNode.setStroke(Color.WHITE);
+                polygonNode.setFill(getColorForType(box.getType()));
+                polygonNode.setVisible(false);
 
-                new Timeline(new KeyFrame(
-                        Duration.millis(1000 + xl * Math.random() * 200),
-                        ae -> polygon.setFill(getColorForType(box.getType())))
-                ).play();
-
-                polygon.setOnMouseClicked(event -> {
+                polygonNode.setOnMouseClicked(event -> {
                     System.out.println(box);
                 });
+
+                Double duration = 1000 + xl * Math.random() * 200;
+                new Timeline(new KeyFrame(
+                        Duration.millis(duration),
+                        ae -> polygonNode.setVisible(true))
+                ).play();
+
+                for(Entity entity : box.getEntities()) {
+
+                    Polygon entityNode = new Polygon();
+                    entityNode.getPoints().addAll(x + HEXA_WIDTH/2 - 5, y + HEXA_HEIGHT/2 - 5,
+                            x + HEXA_WIDTH/2 + 5, y + HEXA_HEIGHT/2 - 5,
+                            x + HEXA_WIDTH/2 + 5, y + HEXA_HEIGHT/2 + 5,
+                            x + HEXA_WIDTH/2 - 5, y + HEXA_HEIGHT/2 + 5);
+                    g.getChildren().add(entityNode);
+
+                    entityNode.setVisible(false);
+
+                    new Timeline(new KeyFrame(
+                            Duration.millis(duration+200),
+                            ae -> entityNode.setVisible(true))
+                    ).play();
+                }
             }
         }
 
