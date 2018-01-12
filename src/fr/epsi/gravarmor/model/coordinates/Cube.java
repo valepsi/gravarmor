@@ -31,7 +31,7 @@ public class Cube {
     static public Cube from(Point point) {
 
         int x = point.getX();
-        int z = point.getY() - (point.getX() - (point.getY()&1))/2;
+        int z = point.getY() - (point.getX() - (point.getX()&1))/2;
         int y = -x-z;
 
         return new Cube(x, y, z);

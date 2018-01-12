@@ -78,17 +78,18 @@ public class HexaCoordinates {
 
         HexaCoordinates result[] = new HexaCoordinates[distance+1];
 
-        for(int i = 0; i < distance; i++) {
+        for(int i = 0; i <= distance; i++) {
 
-            result[i] = new HexaCoordinates(round(lerp(from.getCube(), to.getCube(), 1.0/distance * i)));
+            Cube lerpResult = lerp(from.getCube(), to.getCube(), 1.0/distance * i);
+
+            result[i] = new HexaCoordinates(round(lerpResult));
         }
-        result[distance] = to;
 
         return result;
     }
 
     public String toString() {
 
-        return "HexCoordinates(" + point + ")";
+        return "HexCoordinates(" + point + ", " + Cube.from(point) + ")";
     }
 }
