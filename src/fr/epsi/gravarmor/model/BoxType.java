@@ -1,21 +1,21 @@
 package fr.epsi.gravarmor.model;
 
 public enum BoxType {
-    OUT(false,1),
-    SAND(true,1),
-    QUICKSAND(true,2),
-    FOREST(true,1),
-    MONTAINS(false,1),
-    HIDDEN(false,1),
-    WATER(false,1);
+    OUT(false, 1),
+    SAND(true, 1),
+    QUICKSAND(true, 2),
+    FOREST(true, 1),
+    MONTAINS(false, 1),
+    HIDDEN(false, 1),
+    WATER(false, 1);
 
     private boolean isAvailableForInterraction;
-    private int pm;
+    private int movementPoints;
 
-    BoxType(boolean isAvailableForInterraction,int pm) {
+    BoxType(boolean isAvailableForInterraction, int movementPoints) {
 
         this.isAvailableForInterraction = isAvailableForInterraction;
-        this.pm = pm;
+        this.movementPoints = movementPoints;
     }
 
     public boolean isAvailableForInterraction() {
@@ -23,12 +23,12 @@ public enum BoxType {
         return isAvailableForInterraction;
     }
 
-    public int getPm() {
-        return pm;
+    public void setMovementPoints(int movementPoints) {
+        this.movementPoints = movementPoints;
     }
 
-    public void setPm(int pm) {
-        this.pm = pm;
+    public int getMovementPoints() {
+        return movementPoints;
     }
 
     public static BoxType fromChar(char car) {

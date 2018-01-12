@@ -4,15 +4,15 @@ public enum UnitType {
     INFANTRY(2,3,2,7,3,WeaponType.MISSILES),
     TANK(4,4,6,4,4,WeaponType.MAGNETIC_BOLTS);
 
-    private int mouvementPoint;
+    private int movementPoints;
     private int electronicWarfare;
     private int attackValue;
     private int defenseValue;
     private int maximumRange;
     private WeaponType weaponType;
 
-    UnitType(int mouvementPoint, int electronicWarfare, int attackValue, int defenseValue, int maximumRange, WeaponType weaponType) {
-        this.mouvementPoint = mouvementPoint;
+    UnitType(int movementPoints, int electronicWarfare, int attackValue, int defenseValue, int maximumRange, WeaponType weaponType) {
+        this.movementPoints = movementPoints;
         this.electronicWarfare = electronicWarfare;
         this.attackValue = attackValue;
         this.defenseValue = defenseValue;
@@ -20,12 +20,12 @@ public enum UnitType {
         this.weaponType = weaponType;
     }
 
-    public int getMouvementPoint() {
-        return mouvementPoint;
+    public int getMovementPoints() {
+        return movementPoints;
     }
 
-    public void setMouvementPoint(int mouvementPoint) {
-        this.mouvementPoint = mouvementPoint;
+    public void setMovementPoints(int mouvementPoint) {
+        this.movementPoints = movementPoints;
     }
 
     public int getElectronicWarfare() {

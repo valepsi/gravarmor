@@ -4,7 +4,7 @@ package fr.epsi.gravarmor.model;
 public class Unit extends Entity {
     private boolean actif;
     private boolean destroyed;
-    private int usedMouvementPoint;
+    private int usedMovementPoints;
     private UnitType type;
 
     public Unit(UnitType type) {
@@ -30,12 +30,12 @@ public class Unit extends Entity {
         this.destroyed = destroyed;
     }
 
-    public int getMouvementPoint() {
-        return usedMouvementPoint;
+    public int getMovementPoints() {
+        return usedMovementPoints;
     }
 
-    public void setMouvementPoint(int mouvementPoint) {
-        this.usedMouvementPoint = mouvementPoint;
+    public void setMovementPoints(int movementPoints) {
+        this.usedMovementPoints = movementPoints;
     }
 
     public UnitType getType() {
@@ -50,9 +50,9 @@ public class Unit extends Entity {
         return type.toString();
     }
 
-    public void mouv(LandBox boxD,LandBox boxA){
-        int pmRestant = this.type.getMouvementPoint() - this.getMouvementPoint();
-        if (pmRestant >= boxA.getType().getPm()) {
+    public void move(LandBox boxD, LandBox boxA){
+        int pmRestant = this.type.getMovementPoints() - this.getMovementPoints();
+        if (pmRestant >= boxA.getType().getMovementPoints()) {
             boxD.getEntities().remove(this);
             boxA.getEntities().add(this);
         }

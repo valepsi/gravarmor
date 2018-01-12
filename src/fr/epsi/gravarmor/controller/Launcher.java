@@ -52,7 +52,7 @@ public class Launcher extends Application {
             LandBox box = land.getBox(new HexaCoordinates(new Point(4,5)));
             LandBox arriv = land.getBox(new HexaCoordinates(new Point(5,5)));
             box.getEntities().add(unit);
-            unit.mouv(box,arriv);
+            unit.move(box, arriv);
 
             ScrollPane landPane = (ScrollPane)windowView.lookup("#landPane");
             LandController landController = new LandController(landPane, land);
