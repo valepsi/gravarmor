@@ -1,5 +1,7 @@
 package fr.epsi.gravarmor.model;
 
+import fr.epsi.gravarmor.model.coordinates.HexaCoordinates;
+
 public class HexaLand {
 
     private static final char MAP[][] = {
@@ -46,7 +48,7 @@ public class HexaLand {
 
     public LandBox getBox(HexaCoordinates coordinates) {
 
-        return land[coordinates.getY()][coordinates.getX()];
+        return land[coordinates.getPoint().getY()][coordinates.getPoint().getX()];
     }
 
     public int getHeight() {

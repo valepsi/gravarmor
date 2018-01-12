@@ -1,6 +1,8 @@
 package fr.epsi.gravarmor.controller;
 
 import fr.epsi.gravarmor.model.*;
+import fr.epsi.gravarmor.model.coordinates.HexaCoordinates;
+import fr.epsi.gravarmor.model.coordinates.Point;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Group;
@@ -31,7 +33,7 @@ class LandController {
 
             for (int xl = 0; xl < land.getWidth(); xl++) {
 
-                final HexaCoordinates coordinates = new HexaCoordinates(xl, yl);
+                final HexaCoordinates coordinates = new HexaCoordinates(new Point(xl, yl));
                 final LandBox box = land.getBox(coordinates);
 
                 if (box.getType() == BoxType.HIDDEN) {
@@ -55,7 +57,7 @@ class LandController {
                 polygonNode.setVisible(false);
 
                 polygonNode.setOnMouseClicked(event -> {
-                    System.out.println(box);
+                    System.out.println(coordinates + " : " + box + " " + coordinates.getCube());
                 });
 
                 Double duration = 1000 + xl * Math.random() * 200;

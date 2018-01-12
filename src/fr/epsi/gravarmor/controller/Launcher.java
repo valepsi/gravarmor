@@ -1,6 +1,8 @@
 package fr.epsi.gravarmor.controller;
 
 import fr.epsi.gravarmor.model.*;
+import fr.epsi.gravarmor.model.coordinates.HexaCoordinates;
+import fr.epsi.gravarmor.model.coordinates.Point;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
@@ -46,7 +48,7 @@ public class Launcher extends Application {
             stage.show();
 
             Unit unit = new Unit(4, 6,9,5,8,"infanterie", WeaponType.MISSILES);
-            LandBox box = land.getBox(new HexaCoordinates(4,5));
+            LandBox box = land.getBox(new HexaCoordinates(new Point(4,5)));
             box.getEntities().add(unit);
 
             ScrollPane landPane = (ScrollPane)windowView.lookup("#landPane");
