@@ -7,11 +7,13 @@ public class LandBox {
 
     private BoxType type;
     private List<Entity> entities;
+    private boolean isSelected;
 
     public LandBox(BoxType type) {
 
         this.type = type;
         this.entities = new ArrayList<>();
+        this.isSelected = false;
     }
 
     public LandBox(BoxType type, Entity entity) {
@@ -19,13 +21,14 @@ public class LandBox {
         this.type = type;
         this.entities = new ArrayList<>();
         this.entities.add(entity);
-
+        this.isSelected = false;
     }
 
     public LandBox(BoxType type, List<Entity> entities) {
 
         this.type = type;
         this.entities = entities;
+        this.isSelected = false;
     }
 
     public BoxType getType() {
@@ -36,6 +39,16 @@ public class LandBox {
     public List<Entity> getEntities() {
 
         return entities;
+    }
+
+    public boolean isSelected() {
+
+        return isSelected;
+    }
+
+    public void isSelected(boolean isSelected) {
+
+        this.isSelected = isSelected;
     }
 
     public String toString() {

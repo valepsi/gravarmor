@@ -1,7 +1,9 @@
 package fr.epsi.gravarmor.controller;
 
-import fr.epsi.gravarmor.model.*;
-import fr.epsi.gravarmor.model.callback.ICoordinatesLIstener;
+import fr.epsi.gravarmor.model.HexaLand;
+import fr.epsi.gravarmor.model.LandBox;
+import fr.epsi.gravarmor.model.Unit;
+import fr.epsi.gravarmor.model.UnitType;
 import fr.epsi.gravarmor.model.coordinates.HexaCoordinates;
 import fr.epsi.gravarmor.model.coordinates.Point;
 import javafx.application.Application;
@@ -14,7 +16,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
 
 public class Launcher extends Application {
@@ -57,24 +58,32 @@ public class Launcher extends Application {
             LandBox box = land.getBox(startUnitCoordinates);
             box.getEntities().add(unit);
 
-
-            HexaCoordinates arrivCoordinates = new HexaCoordinates(new Point(4,5));
             ScrollPane landPane = (ScrollPane)windowView.lookup("#landPane");
 
             LandController landController = new LandController(landPane, land);
             landController.setOnBoxClickCallback(coordinates -> {
-                System.out.println(coordinates);
-                LandBox arriv = land.getBox(coordinates);
-                    land.moveEntity(unit, coordinates);
-                    landController.drawLand();
+                System.out.println("Click  " + coordinates);
 
+                HexaCoordinates from = unit.getCoordinates();
+                HexaCoordinates to = coordinates;
+
+                System.out.println("Distance " + from + " -> " + to + " : " + HexaCoordinates.distance(from, to));
+
+                land.moveEntity(unit, coordinates);
+
+                HexaCoordinates path[] = HexaCoordinates.line(from, to);
+                System.out.println("Path " + from + " -> " + to + " : ");
+                for(int i = 0; i < path.length; i++) {
+                    System.out.println(path[i]);
+                    land.getBox(path[i]).isSelected(true);
+                }
+                landController.drawLand();
+                for(int i = 0; i < path.length; i++) {
+                    System.out.println(path[i]);
+                    land.getBox(path[i]).isSelected(false);
+                }
             });
             landController.drawLand();
-
-//            scene.setOnMouseClicked(event -> {
-//                land.moveEntity(unit, coordinates);
-//                landController.drawLand();
-//            });
 
         } catch (IOException e) {
             e.printStackTrace();

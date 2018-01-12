@@ -64,6 +64,10 @@ class LandController {
                 polygonNode.setStroke(Color.WHITE);
                 polygonNode.setFill(getColorForType(box.getType()));
 
+                if(box.isSelected()) {
+                    polygonNode.setOpacity(0.2);
+                }
+
                 polygonNode.setOnMouseClicked(event -> {
                     System.out.println(coordinates + " : " + box + " " + coordinates.getCube());
 
