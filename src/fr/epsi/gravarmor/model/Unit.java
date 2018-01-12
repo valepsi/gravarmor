@@ -4,9 +4,8 @@ package fr.epsi.gravarmor.model;
 public class Unit extends Entity {
     private boolean actif;
     private boolean destroyed;
-    private int mouvementPoint;
+    private int usedMouvementPoint;
     private UnitType type;
-
 
     public Unit(UnitType type) {
         super();
@@ -32,11 +31,11 @@ public class Unit extends Entity {
     }
 
     public int getMouvementPoint() {
-        return mouvementPoint;
+        return usedMouvementPoint;
     }
 
     public void setMouvementPoint(int mouvementPoint) {
-        this.mouvementPoint = mouvementPoint;
+        this.usedMouvementPoint = mouvementPoint;
     }
 
     public UnitType getType() {
