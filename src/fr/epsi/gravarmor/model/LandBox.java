@@ -19,6 +19,7 @@ public class LandBox {
         this.type = type;
         this.entities = new ArrayList<>();
         this.entities.add(entity);
+
     }
 
     public LandBox(BoxType type, List<Entity> entities) {

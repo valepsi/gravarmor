@@ -60,4 +60,17 @@ public class HexaLand {
 
         return MAP[0].length;
     }
+
+    public boolean moveEntity(Entity entity, HexaCoordinates to){
+        LandBox fromBox = getBox(entity.getCoordinates());
+        LandBox toBox = getBox(to);
+
+        if(fromBox.getEntities().remove(entity)) {
+            toBox.getEntities().add(entity);
+            entity.setCoordinates(to);
+            return true;
+        }
+
+        return false;
+    }
 }

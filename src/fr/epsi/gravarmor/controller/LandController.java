@@ -1,6 +1,7 @@
 package fr.epsi.gravarmor.controller;
 
 import fr.epsi.gravarmor.model.*;
+import fr.epsi.gravarmor.model.callback.ICoordinatesLIstener;
 import fr.epsi.gravarmor.model.coordinates.HexaCoordinates;
 import fr.epsi.gravarmor.model.coordinates.Point;
 import javafx.animation.KeyFrame;
@@ -11,6 +12,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.util.Duration;
 
+import java.util.EventListener;
+
 import static fr.epsi.gravarmor.controller.Launcher.HEXA_HEIGHT;
 import static fr.epsi.gravarmor.controller.Launcher.HEXA_WIDTH;
 
@@ -19,10 +22,16 @@ class LandController {
     private final ScrollPane pane;
     private final HexaLand land;
 
+    private boolean isFirstDrawing;
+
+    private ICoordinatesLIstener boxClickCallback;
+
     LandController(ScrollPane pane, final HexaLand land) {
 
         this.pane = pane;
         this.land = land;
+
+        this.isFirstDrawing = true;
     }
 
     public void drawLand() {
@@ -54,17 +63,21 @@ class LandController {
 
                 polygonNode.setStroke(Color.WHITE);
                 polygonNode.setFill(getColorForType(box.getType()));
-                polygonNode.setVisible(false);
 
                 polygonNode.setOnMouseClicked(event -> {
                     System.out.println(coordinates + " : " + box + " " + coordinates.getCube());
+
+                    if(boxClickCallback != null) boxClickCallback.handleEvent(coordinates);
                 });
 
                 Double duration = 1000 + xl * Math.random() * 200;
-                new Timeline(new KeyFrame(
-                        Duration.millis(duration),
-                        ae -> polygonNode.setVisible(true))
-                ).play();
+                if(isFirstDrawing) {
+                    polygonNode.setVisible(false);
+                    new Timeline(new KeyFrame(
+                            Duration.millis(duration),
+                            ae -> polygonNode.setVisible(true))
+                    ).play();
+                }
 
                 for(Entity entity : box.getEntities()) {
 
@@ -75,15 +88,18 @@ class LandController {
                             x + HEXA_WIDTH/2 - 5, y + HEXA_HEIGHT/2 + 5);
                     g.getChildren().add(entityNode);
 
-                    entityNode.setVisible(false);
-
-                    new Timeline(new KeyFrame(
-                            Duration.millis(duration+200),
-                            ae -> entityNode.setVisible(true))
-                    ).play();
+                    if(isFirstDrawing) {
+                        entityNode.setVisible(false);
+                        new Timeline(new KeyFrame(
+                                Duration.millis(duration + 200),
+                                ae -> entityNode.setVisible(true))
+                        ).play();
+                    }
                 }
             }
         }
+
+        isFirstDrawing = false;
 
         pane.setContent(g);
     }
@@ -109,5 +125,10 @@ class LandController {
             default:
                 return getColorForType(BoxType.WATER);
         }
+    }
+
+    public void setOnBoxClickCallback(ICoordinatesLIstener eventListener) {
+
+        this.boxClickCallback = eventListener;
     }
 }

@@ -1,6 +1,7 @@
 package fr.epsi.gravarmor.controller;
 
 import fr.epsi.gravarmor.model.*;
+import fr.epsi.gravarmor.model.callback.ICoordinatesLIstener;
 import fr.epsi.gravarmor.model.coordinates.HexaCoordinates;
 import fr.epsi.gravarmor.model.coordinates.Point;
 import javafx.application.Application;
@@ -13,6 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class Launcher extends Application {
@@ -48,16 +50,31 @@ public class Launcher extends Application {
             stage.getIcons().add(new Image("fr/epsi/gravarmor/icons/appIcon.png"));
             stage.show();
 
+
+            HexaCoordinates startUnitCoordinates = new HexaCoordinates(new Point(4,5));
             Unit unit = new Unit(UnitType.INFANTRY);
-
-            LandBox box = land.getBox(new HexaCoordinates(new Point(4,5)));
-            LandBox arriv = land.getBox(new HexaCoordinates(new Point(5,5)));
+            unit.setCoordinates(startUnitCoordinates);
+            LandBox box = land.getBox(startUnitCoordinates);
             box.getEntities().add(unit);
-            unit.move(box, arriv);
 
+
+            HexaCoordinates arrivCoordinates = new HexaCoordinates(new Point(4,5));
             ScrollPane landPane = (ScrollPane)windowView.lookup("#landPane");
+
             LandController landController = new LandController(landPane, land);
+            landController.setOnBoxClickCallback(coordinates -> {
+                System.out.println(coordinates);
+                LandBox arriv = land.getBox(coordinates);
+                    land.moveEntity(unit, coordinates);
+                    landController.drawLand();
+
+            });
             landController.drawLand();
+
+//            scene.setOnMouseClicked(event -> {
+//                land.moveEntity(unit, coordinates);
+//                landController.drawLand();
+//            });
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -21,9 +21,5 @@ public class Entity {
         return coordinates;
     }
 
-    public void mouvObject(LandBox boxD,LandBox boxA){
-            boxD.getEntities().remove(this);
-            boxA.getEntities().add(this);
-        }
 
 }
