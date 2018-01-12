@@ -16,15 +16,14 @@
             <MenuItem onAction="#handleMenuActionQuit" text="Quit" />
         </Menu>
     </MenuBar>
-   <BorderPane prefHeight="900.0" prefWidth="900.0">
-      <center>
-          <ScrollPane fx:id="landPane" BorderPane.alignment="CENTER">
-
-    </ScrollPane>
-      </center>
-      <right>
-         <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-      </right></BorderPane>
+    <BorderPane>
+        <center>
+            <ScrollPane fx:id="landPane" BorderPane.alignment="CENTER" />
+        </center>
+        <right>
+            <Pane prefWidth="200.0" BorderPane.alignment="CENTER" />
+        </right>
+    </BorderPane>
     <stylesheets>
         <URL value="@windowView.css" />
     </stylesheets>
