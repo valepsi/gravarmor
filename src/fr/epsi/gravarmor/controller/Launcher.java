@@ -45,7 +45,7 @@ public class Launcher extends Application {
             stage.getIcons().add(new Image("fr/epsi/gravarmor/icons/appIcon.png"));
             stage.show();
 
-            Unit unit = new Unit(4, 6,9,5,8,"infanterie", WeaponType.MISSILES);
+            Unit unit = new Unit(UnitType.INFANTRY);
             LandBox box = land.getBox(new HexaCoordinates(4,5));
             box.getEntities().add(unit);
 
