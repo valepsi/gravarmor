@@ -6,3 +6,28 @@ test:
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
     - find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+
+dependencies:
+  override:
+    - mvn --fail-never dependency:go-offline || true
+  pre:
+    # Install JFrog CLI
+    - wget https://dl.bintray.com/jfrog/jfrog-cli-go/1.7.1/jfrog-cli-linux-amd64/jfrog
+    - chmod +x jfrog
+    
+compile:
+  override:
+    - mvn clean install
+
+    # Configure JFrog CLI with parameters of your Artifactory instance
+    - ./jfrog rt config --url $ARTIFACTORY_URL --user $ARTIFACTORY_USER --apikey $ARTIFACTORY_PASSWORD
+
+    # Upload artifacts to Artifactory using JFrog CLI
+    - ./jfrog rt u "multi*/*.jar" circleci-generic-local --build-name=circleci-generic-artifactory --build-number=$CIRCLE_BUILD_NUM --flat=false
+    - ./jfrog rt u "multi*/*.war" circleci-generic-local --build-name=circleci-generic-artifactory --build-number=$CIRCLE_BUILD_NUM --flat=false
+
+    #  Collect environment variables and attach them to a build.
+    - ./jfrog rt bce circleci-generic-artifactory $CIRCLE_BUILD_NUM
+
+    #  Publish build info to Artifactory.
+    - ./jfrog rt bp circleci-generic-artifactory $CIRCLE_BUILD_NUM
