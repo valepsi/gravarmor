@@ -4,12 +4,13 @@ import fr.epsi.gravarmor.model.BoxType;
 import fr.epsi.gravarmor.model.LandBox;
 import fr.epsi.gravarmor.model.Team;
 import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.ArrayList;
 
 public class UnitTest {
 
-    @org.junit.jupiter.api.Test
+    @Test
     public void testTeamName() {
 
         String teamName1 = "MaSuperTeam1";
@@ -29,7 +30,7 @@ public class UnitTest {
         Assert.assertNotEquals(team3.getName(), team1.getName());
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     public void testBoxType() {
 
         BoxType boxType1 = BoxType.WATER;
