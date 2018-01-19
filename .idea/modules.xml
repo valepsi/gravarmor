@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/gravarmor.iml" filepath="$PROJECT_DIR$/gravarmor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Gravarmor.iml" filepath="$PROJECT_DIR$/.idea/modules/Gravarmor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Gravarmor_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Gravarmor_main.iml" group="Gravarmor" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Gravarmor_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Gravarmor_test.iml" group="Gravarmor" />
     </modules>
   </component>
 </project>
