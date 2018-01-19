@@ -16,7 +16,7 @@ public class UnitTest {
     public void testTeamName() {
 
         String teamName1 = "MaSuperTeam1";
-        String teamName2 = "MaSuperTeam2";
+        String teamName2 = "MaSuperTeam1";
         String teamName3 = "MaSuperTeam3";
 
         Team team1 = new Team(teamName1, new ArrayList<>());
