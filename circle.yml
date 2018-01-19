@@ -2,11 +2,6 @@ machine:
   java:
     version: oraclejdk8
 
-test:
-  post:
-    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-    - find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
-
 dependencies:
   pre:
     - chmod +x gradlew
@@ -21,6 +16,9 @@ test:
     - ./gradlew clean assemble
     # This will run the tests
     - ./gradlew test
+  post:
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+    - find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
     
 deployment:
   override:
