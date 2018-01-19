@@ -16,5 +16,7 @@ dependencies {
 }
 
 test {
-    include '**fr.epsi.gravarmor/*'
+    beforeTest { descriptor ->
+        logger.lifecycle("Running test: $descriptor.className")
+    }
 }
