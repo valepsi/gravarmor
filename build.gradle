@@ -14,9 +14,3 @@ dependencies {
         'org.junit.jupiter:junit-jupiter-api:5.0.3'
     )
 }
-
-test {
-    beforeTest { descriptor ->
-        logger.lifecycle("Running test: $descriptor.className")
-    }
-}
